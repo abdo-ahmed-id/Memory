@@ -16,7 +16,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     Modular.get<AppBloc>().initState();
     Timer(Duration(seconds: 3),
-        () => Modular.to.pushReplacementNamed(AppRoutes.home));
+        () => Modular.to.pushReplacementNamed(AppRoutes.login));
   }
 
   @override

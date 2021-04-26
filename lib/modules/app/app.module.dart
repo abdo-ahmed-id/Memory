@@ -5,6 +5,7 @@ import 'package:memories/modules/app/bloc/app.bloc.dart';
 import 'package:memories/modules/app/service/memory_service.dart';
 import 'package:memories/modules/details/details.page.dart';
 import 'package:memories/modules/home/home.page.dart';
+import 'package:memories/modules/login/login.page.dart';
 import 'package:memories/modules/splash/splash.page.dart';
 
 class AppModule extends Module {
@@ -23,5 +24,6 @@ class AppModule extends Module {
         child: (_, args) => DetailsPage(
               memories: args.data,
             )),
+    ChildRoute(AppRoutes.login, child: (_, args) => LoginPage()),
   ];
 }
