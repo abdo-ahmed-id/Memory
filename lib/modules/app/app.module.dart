@@ -2,6 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:memories/data/providers/memories_data_provider.dart';
 import 'package:memories/helpers/routes.dart';
 import 'package:memories/modules/app/bloc/app.bloc.dart';
+import 'package:memories/modules/app/service/auth.service.dart';
 import 'package:memories/modules/app/service/memory_service.dart';
 import 'package:memories/modules/details/details.page.dart';
 import 'package:memories/modules/home/home.page.dart';
@@ -11,9 +12,10 @@ import 'package:memories/modules/splash/splash.page.dart';
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
+    Bind((i) => AuthService()),
     Bind((i) => MemoriesDataProvider()),
     Bind((i) => MemoryService(i.get<MemoriesDataProvider>())),
-    Bind((i) => AppBloc(i.get<MemoryService>())),
+    Bind((i) => AppBloc(i.get<MemoryService>(), i.get<AuthService>())),
   ];
 
   @override

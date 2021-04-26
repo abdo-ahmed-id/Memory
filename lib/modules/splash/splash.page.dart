@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:memories/helpers/routes.dart';
 import 'package:memories/modules/app/bloc/app.bloc.dart';
+import 'package:memories/modules/app/service/auth.service.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -15,8 +16,11 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Modular.get<AppBloc>().initState();
-    Timer(Duration(seconds: 3),
-        () => Modular.to.pushReplacementNamed(AppRoutes.login));
+    Timer(
+        Duration(seconds: 3),
+        () => Modular.to.pushReplacementNamed(Modular.get<AuthService>().isLogin
+            ? AppRoutes.home
+            : AppRoutes.login));
   }
 
   @override

@@ -17,6 +17,13 @@ class HomePage extends StatelessWidget {
     List<Memories> listMemories = appBloc.state.memories;
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            appBloc.logout();
+            Modular.to.pushReplacementNamed(AppRoutes.login);
+          },
+          icon: Icon(Icons.logout),
+        ),
         title: Text('Your Memories'),
         centerTitle: true,
         actions: [
